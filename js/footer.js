@@ -1,0 +1,73 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const mount = document.getElementById('site-footer');
+    if (!mount) return;
+  
+    // Detect if we are inside /pages/
+    const inPages = /\/pages(\/|$)/.test(location.pathname);
+    const BASE = inPages ? '../' : '';
+  
+    // Footer HTML with {{BASE}} placeholders
+    let footerHTML = `
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="{{BASE}}images/youth-tech-logo.png" alt="Youth Tech Logo" class="logo">
+          </div>
+          <p>Empowering Tanzanian youth through technology education and digital innovation.</p>
+          <div class="social-links">
+            <a href="https://meta.wikimedia.org/wiki/Wikimedia_Community_Kilimanjaro" target="_blank" rel="noopener">
+              <i class="fab fa-wikipedia-w"></i>
+            </a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/youthtechtz/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+  
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="{{BASE}}pages/about.html">About Us</a></li>
+            <li><a href="{{BASE}}pages/programs.html">Programs</a></li>
+            <li><a href="{{BASE}}pages/team.html">Team</a></li>
+            <li><a href="{{BASE}}pages/blog.html">Blog</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-section">
+          <h3>Programs</h3>
+          <ul>
+            <li><a href="https://meta.wikimedia.org/wiki/Wikimedia_Community_Kilimanjaro" target="_blank" rel="noopener">Wikipedia Project</a></li>
+            <li><a href="{{BASE}}pages/programs.html">Coding Bootcamp</a></li>
+            <li><a href="{{BASE}}pages/programs.html">Digital Literacy</a></li>
+            <li><a href="{{BASE}}pages/programs.html">Tech Mentorship</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> Kilimanjaro, Tanzania</p>
+            <p><i class="fas fa-envelope"></i> info@youthtech.or.tz</p>
+            <p><i class="fas fa-phone"></i> +255 764454097</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2025 Youth Tech. All rights reserved. | 
+           <a href="{{BASE}}pages/privacy.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+    `;
+  
+    // Replace {{BASE}} tokens with the actual path
+    footerHTML = footerHTML.replace(/{{BASE}}/g, BASE);
+  
+    // Inject into the DOM
+    mount.outerHTML = footerHTML;
+  });
+  
